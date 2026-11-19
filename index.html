@@ -1,0 +1,139 @@
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FutureVault | Smart Investing & Wealth Building</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: #1e293b;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 8%; background: rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 10;
+    }
+    .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; }
+    .nav-btn {
+      background: var(--accent); color: #064e3b; font-weight: 600;
+      padding: 0.6rem 1.25rem; border-radius: 8px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--accent-hover); color: #fff; }
+    .hero {
+      max-width: 1100px; margin: 3rem auto; padding: 0 5%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;
+    }
+    .hero h1 { font-size: 2.75rem; line-height: 1.2; margin-bottom: 1rem; }
+    .hero p { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.75rem; }
+    .video-box {
+      border-radius: 16px; overflow: hidden; border: 2px solid #334155;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); background: #000;
+    }
+    video { width: 100%; display: block; object-fit: cover; }
+    .xfactor {
+      max-width: 900px; margin: 4rem auto; padding: 2.5rem;
+      background: var(--card); border-radius: 16px; border: 1px solid #334155;
+    }
+    .xfactor h2 { margin-bottom: 0.5rem; color: var(--accent); }
+    .slider-group { margin: 1.5rem 0; }
+    .slider-group label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 0.5rem; }
+    input[type="range"] { width: 100%; accent-color: var(--accent); cursor: pointer; }
+    .result-box {
+      margin-top: 1.5rem; padding: 1.25rem; background: #0f172a;
+      border-radius: 10px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .result-amount { font-size: 2rem; font-weight: 700; color: var(--accent); }
+    footer {
+      max-width: 900px; margin: 3rem auto 2rem; padding: 1.5rem 5%;
+      border-top: 1px solid #334155; color: var(--muted); font-size: 0.95rem;
+    }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.1rem; }
+    }
+  </style>
+
+  <!-- PASTE YOUR CHATLING.AI EMBED SCRIPT DIRECTLY BELOW THIS LINE -->
+
+</head>
+<body>
+
+  <header>
+    <div class="logo">FutureVault</div>
+    <a href="about.html" class="nav-btn">Explore Strategy &amp; Mission &rarr;</a>
+  </header>
+<script> window.chtlConfig = { chatbotId: "7925246273" } </script>
+<script async data-id="7925246273" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+  <section class="hero">
+    <div>
+      <h1>Start Early. Let Time Multiply Your Wealth.</h1>
+      <p>
+        FutureVault empowers young savers and first-time investors to automate micro-contributions,
+        build diversified index portfolios, and harness the power of compounding from day one.
+      </p>
+      <a href="about.html" class="nav-btn">Learn How It Works</a>
+    </div>
+
+    <div class="video-box">
+      <video autoplay muted loop playsinline>
+        <source src="financial_growth_bars_rising_7d8a890d.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <section class="xfactor">
+    <h2>Interactive Wealth Simulator</h2>
+    <p style="color: var(--muted);">Adjust your monthly savings and time horizon (assuming an 8% average annual return) to see your future balance.</p>
+
+    <div class="slider-group">
+      <label>Monthly Contribution: <span id="monthlyVal">$250</span></label>
+      <input type="range" id="monthly" min="50" max="2000" step="25" value="250" oninput="calculateGrowth()" />
+    </div>
+
+    <div class="slider-group">
+      <label>Years Invested: <span id="yearsVal">25 Years</span></label>
+      <input type="range" id="years" min="5" max="45" step="1" value="25" oninput="calculateGrowth()" />
+    </div>
+
+    <div class="result-box">
+      <div>
+        <div style="color: var(--muted); font-size: 0.9rem;">Projected Portfolio Value</div>
+        <div id="totalContributed" style="font-size: 0.85rem; color: var(--muted);">Total Principal: $75,000</div>
+      </div>
+      <div class="result-amount" id="futureValue">$237,757</div>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Creative X-Factor:</strong> Our interactive Compound Interest Wealth Simulator lets users dynamically adjust monthly contributions and investment timelines to visualize real-time portfolio growth, turning abstract saving habits into concrete, motivating financial milestones.
+  </footer>
+
+  <script>
+    function calculateGrowth() {
+      const P = parseFloat(document.getElementById('monthly').value);
+      const t = parseInt(document.getElementById('years').value);
+      const r = 0.08 / 12;
+      const n = t * 12;
+
+      const futureVal = P * ((Math.pow(1 + r, n) - 1) / r);
+      const principal = P * n;
+
+      document.getElementById('monthlyVal').textContent = '$' + P.toLocaleString();
+      document.getElementById('yearsVal').textContent = t + (t === 1 ? ' Year' : ' Years');
+      document.getElementById('totalContributed').textContent = 'Total Principal: $' + principal.toLocaleString();
+      document.getElementById('futureValue').textContent = '$' + Math.round(futureVal).toLocaleString();
+    }
+  </script>
+
+</body>
+</html>
